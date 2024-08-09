@@ -13,10 +13,10 @@ const productSchema = mongoose.Schema({
         type: String,
         default:''
     },
-    // image: {
-    //     type: String,
-    //     required: true
-    // },
+    image: {
+        type: String,
+        // required: true
+    },
     images: [{
         type:String
     }],
@@ -28,11 +28,11 @@ const productSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    // catagory:{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "Catagory",
-    //     required: true
-    // },
+    catagory:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Catagory",
+        required: true
+    },
     countInStock: {
         type: Number,
         default: 0
