@@ -1,5 +1,6 @@
 import express from 'express'
 import { Catagory } from '../models/catagory.model.js'
+import mongoose from 'mongoose'
 
 const router = express.Router()
 
@@ -28,9 +29,8 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-    const _id = req.params.id;
-    if (_id.length !== 24) {
-        return res.status(400).json({ message: "provided id is not correct !!" })
+    if(!mongoose.isValidObjectId){
+        return res.status(400).send({message: "Invalid catagoryID !!"})
     }
     let catagory = await Catagory.findById(req.params.id);
     if (!catagory) {
@@ -41,9 +41,8 @@ router.get('/:id', async (req, res) => {
 })
 
 router.delete('/:id', async (req, res) => {
-    const _id = req.params.id;
-    if (_id.length !== 24) {
-        return res.status(400).json({ success: false, message: "id length must be 24 characters !!" })
+    if(!mongoose.isValidObjectId){
+        return res.status(400).send({message: "Invalid catagoryID !!"})
     }
     const catagory = await Catagory.findByIdAndDelete(_id);
     if (!catagory) {
@@ -53,9 +52,8 @@ router.delete('/:id', async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
-    const _id = req.params.id;
-    if (_id.length !== 24) {
-        return res.status(400).json({ success: false, message: "id length must be 24 characters !!" })
+    if(!mongoose.isValidObjectId){
+        return res.status(400).send({message: "Invalid catagoryID !!"})
     }
     let catagory = await Catagory.findByIdAndUpdate(_id, {
         name: req.body.name,
@@ -63,7 +61,8 @@ router.put('/:id', async (req, res) => {
         icon: req.body.icon,
         image: req.body.icon
     },
-        { new: true })
+    { new: true }
+)
     if (!catagory) {
         return res.status(400).json({ success: false, message: "catagory is not found" })
     }
