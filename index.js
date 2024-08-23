@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3000
 app.use(express.json({limit: "16KB"}))
 app.use(cors({origin: process.env.CORS_ORIGIN}))
 app.use(morgan('tiny'))
-app.use(authJwt())
+// app.use(authJwt())
 app.use(errorHandler)
 
 
@@ -48,3 +48,6 @@ app.use('/catagory',catagoryRoute)
 
 import usersRoute from './routes/users.routes.js'
 app.use('/users', usersRoute)
+
+import orderRoute from './routes/order.routes.js'
+app.use('/orders', orderRoute)
