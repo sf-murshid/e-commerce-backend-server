@@ -5,48 +5,48 @@ const orderSchema = mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'OrderItem',
-      required: true
+      required: true,
     },
   ],
   shippingAddress1: {
     type: String,
-    required: true
+    required: true,
   },
   shippingAddress2: {
     type: String,
   },
   city: {
     type: String,
-    required: true
+    required: true,
   },
   zip: {
     type: String,
-    required: true
+    required: true,
   },
   country: {
     type: String,
-    required: true
+    required: true,
   },
   phone: {
     type: String,
-    required: true
+    required: true,
   },
   status: {
     type: String,
     required: true,
-    default: "Pending"
+    default: 'Pending',
   },
   totalPrice: {
-    type: Number
+    type: Number,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: 'User',
   },
   dateOrdered: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-export const Order = mongoose.model("Order", orderSchema)
+export const Order = mongoose.model('Order', orderSchema);

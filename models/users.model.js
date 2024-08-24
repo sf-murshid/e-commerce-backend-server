@@ -1,50 +1,52 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const userSchema = mongoose.Schema({
-    name:{
-        type: String,
-        required: true
+const userSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-    email:{
-        type: String,
-        required: true,
-        unique: true,
-        toLowerCase: true
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      toLowerCase: true,
     },
-    password:{
-        type: String,
-        required: true,
-        minLength: [6, "Password length should be atleast 6 charecters"]
+    password: {
+      type: String,
+      required: true,
+      minLength: [6, 'Password length should be atleast 6 charecters'],
     },
-    street:{
-        type: String,
-        default: ""
+    street: {
+      type: String,
+      default: '',
     },
-    apartment:{
-        type: String,
-        default: ""
+    apartment: {
+      type: String,
+      default: '',
     },
-    city:{
-        type: String,
-        default: ""
+    city: {
+      type: String,
+      default: '',
     },
-    zip:{
-        type: String,
-        default: "000000"
+    zip: {
+      type: String,
+      default: '000000',
     },
-    country:{
-        type: String,
-        default: ""
+    country: {
+      type: String,
+      default: '',
     },
-    phone:{
-        type: Number,
-        default: 0
+    phone: {
+      type: Number,
+      default: 0,
     },
     isAdmin: {
-        type: Boolean,
-        default: false
-    }
-
-},{timestamps: true})
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
 
 export const User = mongoose.model('User', userSchema);
